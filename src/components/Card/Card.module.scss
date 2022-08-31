@@ -1,0 +1,48 @@
+.wrapper {
+	width: 359px;
+	margin-bottom: 50px;
+
+	.mainImage {
+		width: 100%;
+		transition: all 300ms;
+		cursor: pointer;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	a + p {
+		font-size: 22px;
+		margin-top: 15px;
+		cursor: pointer;
+	}
+
+	p {
+		font-size: 18px;
+	}
+
+	p + p {
+		font-weight: 600;
+		margin-top: 15px;
+	}
+
+	p + div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 18px;
+
+		button {
+			width: 40%;
+			padding: 10px;
+			border-radius: 5px;
+			text-align: center;
+			cursor: pointer;
+			border: 1px solid rgba($color: #000000, $alpha: 0.2);
+			display: flex;
+			justify-content: space-evenly;
+			font-weight: 500;
+		}
+	}
+}

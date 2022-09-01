@@ -40,6 +40,7 @@ const Index: React.FC = (props: Props) => {
 						<p
 							onClick={() => setSortIndex(i)}
 							className={sortIndex === i ? s.active : ''}
+							key={i}
 						>
 							{element}
 						</p>

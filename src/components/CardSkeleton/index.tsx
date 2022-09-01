@@ -5,7 +5,7 @@ import ContentLoader from 'react-content-loader';
 
 type Props = {};
 
-const Index: React.FC<Props> = (props) => {
+const Index: React.FC<Props> = ({}) => {
 	return (
 		<div className={s.wrapper}>
 			<ContentLoader
@@ -15,7 +15,6 @@ const Index: React.FC<Props> = (props) => {
 				viewBox='0 0 359 379'
 				backgroundColor='#dedede'
 				foregroundColor='#ffffff'
-				{...props}
 			>
 				<rect x='110' y='33' rx='0' ry='0' width='0' height='1' />
 				<rect x='-2' y='3' rx='0' ry='0' width='359' height='269' />

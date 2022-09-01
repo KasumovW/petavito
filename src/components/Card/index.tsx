@@ -1,9 +1,20 @@
 import React from 'react';
 import s from './Card.module.scss';
 
-type Props = {};
+export interface IProduct {
+	id: number;
+	title: string;
+	price: number;
+	favorite: boolean;
+	category: number;
+	imgUrl: string;
+}
 
-const Index: React.FC<Props> = ({}) => {
+type Props = {
+	product: IProduct;
+};
+
+const Index: React.FC<Props> = ({ product }) => {
 	const [counter, setCounter] = React.useState(0);
 
 	return (
@@ -11,14 +22,14 @@ const Index: React.FC<Props> = ({}) => {
 			<a href='#'>
 				<img
 					className={s.mainImage}
-					src='https://hdpic.club/uploads/posts/2021-12/thumbs/1639331474_35-hdpic-club-p-mersedes-w212-restailing-35.jpg'
+					src={product.imgUrl}
 					alt='Картинка не прогрузилась'
 				/>
 			</a>
-			<p>Mercedes-Benz E63AMG</p>
-			<p>Рейтинг: 7/10</p>
+			<p>{product.title}</p>
+			<p>Рейтинг: {product.category}/10</p>
 			<div>
-				<p>Цена: 1.600.000 ₽</p>
+				<p>Цена: {product.price} ₽</p>
 				<button onClick={() => setCounter(counter + 1)}>
 					Добавить <div>{counter}</div>
 				</button>

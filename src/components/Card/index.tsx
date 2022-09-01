@@ -7,6 +7,7 @@ export interface IProduct {
 	price: number;
 	favorite: boolean;
 	category: number;
+	rating: number;
 	imgUrl: string;
 }
 
@@ -20,14 +21,10 @@ const Index: React.FC<Props> = ({ product }) => {
 	return (
 		<div className={s.wrapper}>
 			<a href='#'>
-				<img
-					className={s.mainImage}
-					src={product.imgUrl}
-					alt='Картинка не прогрузилась'
-				/>
+				<img className={s.mainImage} src={product.imgUrl} alt='Картинка не прогрузилась' />
 			</a>
 			<p>{product.title}</p>
-			<p>Рейтинг: {product.category}/10</p>
+			<p>Рейтинг: {product.rating}/10</p>
 			<div>
 				<p>Цена: {product.price} ₽</p>
 				<button onClick={() => setCounter(counter + 1)}>

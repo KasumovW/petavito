@@ -3,11 +3,17 @@ import s from './Category.module.scss';
 
 import arrow from '../../assets/img/arrow-down.svg';
 
+import { changeCategoryId, changeSortType } from '../../redux/slice/productsSlice';
+import { RootState } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+
 type Props = {};
 
 const Index: React.FC = (props: Props) => {
-	const [categoryIndex, setCategoryIndex] = React.useState<number>(0);
-	const [sortIndex, setSortIndex] = React.useState<number>(0);
+	const dispatch = useAppDispatch();
+	const { categoryId, sortType } = useAppSelector((state: RootState) => state.products);
+	console.log(sortType);
+
 	const category = [
 		'Все',
 		'Авто',
@@ -17,15 +23,19 @@ const Index: React.FC = (props: Props) => {
 		'Услуги',
 		'Запчасти/Аксессуары',
 	];
-	const sort = ['Цена', 'Рейтинг', 'Алфавит'];
+	const sort = [
+		{ name: 'Цена', sortProperty: 'price', id: 0 },
+		{ name: 'Рейтинг', sortProperty: 'rating', id: 1 },
+		{ name: 'Алфавит', sortProperty: 'title', id: 2 },
+	];
 
 	return (
 		<div className={s.category}>
 			<ul>
 				{category.map((element, i) => (
 					<li
-						onClick={() => setCategoryIndex(i)}
-						className={categoryIndex === i ? s.active : ''}
+						onClick={() => dispatch(changeCategoryId(i))}
+						className={categoryId === i ? s.active : ''}
 						key={i}
 					>
 						{element}
@@ -34,15 +44,15 @@ const Index: React.FC = (props: Props) => {
 			</ul>
 			<div>
 				<img src={arrow} alt='Иконка не прогрузилась' />
-				Сортировка по: <span>{sort[sortIndex]}</span>
+				Сортировка по: <span>{sort[sortType.id].name}</span>
 				<div>
 					{sort.map((element, i) => (
 						<p
-							onClick={() => setSortIndex(i)}
-							className={sortIndex === i ? s.active : ''}
+							onClick={() => dispatch(changeSortType(element))}
+							className={sortType.id === i ? s.active : ''}
 							key={i}
 						>
-							{element}
+							{element.name}
 						</p>
 					))}
 				</div>

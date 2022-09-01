@@ -12,11 +12,7 @@ const Index: React.FC = (props: Props) => {
 		<div className={s.wrapper}>
 			<div className={s.container}>
 				<div className={s.logo}>
-					<img
-						onClick={() => window.scrollTo(0, 0)}
-						src={best_logo}
-						alt='Иконка не прогрузилась'
-					/>
+					<img onClick={() => window.scrollTo(0, 0)} src={best_logo} alt='Иконка не прогрузилась' />
 					<p>
 						Best logo <br /> in the world
 					</p>

@@ -6,7 +6,7 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://630fd20e36e6a2a04ee2254c.mockapi.io/api/' }),
     endpoints: (build) => ({
         getProducts: build.query({
-            query: (limit = '') => `products${limit != '' && `?page=1&limit=${limit}`}`,
+            query: ({limit, categoryId, sortType}) => `products?${categoryId > 0 ? `&category=${categoryId}` : ''}&sortBy=${sortType.sortProperty}&order=${sortType.sortProperty === 'title' ? 'asc' : 'desc'}`,
             providesTags: (result) =>
             result
               ? [

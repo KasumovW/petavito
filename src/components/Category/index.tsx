@@ -12,7 +12,6 @@ type Props = {};
 const Index: React.FC = (props: Props) => {
 	const dispatch = useAppDispatch();
 	const { categoryId, sortType } = useAppSelector((state: RootState) => state.products);
-	console.log(sortType);
 
 	const category = [
 		'Все',
@@ -50,7 +49,7 @@ const Index: React.FC = (props: Props) => {
 						<p
 							onClick={() => dispatch(changeSortType(element))}
 							className={sortType.id === i ? s.active : ''}
-							key={i}
+							key={element.id}
 						>
 							{element.name}
 						</p>

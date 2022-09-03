@@ -1,0 +1,30 @@
+.paginate {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+
+	li {
+		a {
+			margin-right: 15px;
+			padding: 10px 15px;
+			border: 1px solid rgba($color: #000000, $alpha: 0.3);
+			border-radius: 30px;
+			cursor: pointer;
+			transition: all 150ms ease;
+
+			&:hover {
+				background-color: black;
+				color: white;
+			}
+		}
+	}
+
+	:global {
+		.selected {
+			a {
+				background-color: black;
+				color: white;
+			}
+		}
+	}
+}

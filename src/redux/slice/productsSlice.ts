@@ -8,17 +8,21 @@ interface ISortType {
 
 interface ICounter {
     categoryId: number,
+    searchValue: string,
     sortType: ISortType,
-};
+    page: number,
+}
 
 const initialState: ICounter = {
     categoryId: 0,
+    searchValue: '',
     sortType: {
         name: 'Рейтинг',
         sortProperty: 'rating',
         id: 1,
     },
-};
+    page: 1,
+}
 
 export const productsSlice = createSlice({
     name: 'products',
@@ -29,10 +33,16 @@ export const productsSlice = createSlice({
         },
         changeSortType: (stata, action) => {
             stata.sortType = action.payload;
+        },
+        changeSearchValue: (state, action) => {
+            state.searchValue = action.payload;
+        },
+        changePage: (state, action) => {
+            state.page = action.payload;
         }
     }
 })
 
 
-export const { changeCategoryId, changeSortType } = productsSlice.actions;
+export const { changeCategoryId, changeSortType, changeSearchValue, changePage } = productsSlice.actions;
 export default productsSlice.reducer;

@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
@@ -6,7 +6,7 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://630fd20e36e6a2a04ee2254c.mockapi.io/api/' }),
     endpoints: (build) => ({
         getProducts: build.query({
-            query: ({limit, categoryId, sortType}) => `products?${categoryId > 0 ? `&category=${categoryId}` : ''}&sortBy=${sortType.sortProperty}&order=${sortType.sortProperty === 'title' ? 'asc' : 'desc'}`,
+            query: ({categoryId, sortType, searchValue, page}) => `products?${page ? `p=${page}&l=9` : ''}${categoryId > 0 ? `&category=${categoryId}` : ''}&sortBy=${sortType.sortProperty}&order=${sortType.sortProperty === 'title' ? 'asc' : 'desc'}${searchValue ? `&search=${searchValue}` : ''}`,
             providesTags: (result) =>
             result
               ? [

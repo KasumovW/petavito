@@ -1,0 +1,25 @@
+.wrapper {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 1440px;
+	margin: auto;
+
+	h1 {
+		font-size: 220px;
+		font-weight: 700;
+		margin-top: 10%;
+	}
+
+	h4 {
+		font-size: 44px;
+		font-weight: 600;
+		margin-top: 50px;
+	}
+
+	h6 {
+		font-size: 22px;
+		margin-top: 30px;
+	}
+}

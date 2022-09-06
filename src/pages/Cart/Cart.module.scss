@@ -3,74 +3,33 @@
 	margin: auto;
 	padding: 0 20px;
 
-	h1 {
-		font-size: 44px;
+	.clear {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin-top: 50px;
+
+		h1 {
+			font-size: 44px;
+		}
+
+		P {
+			font-size: 18px;
+			text-decoration: underline;
+			cursor: pointer;
+		}
 	}
 
 	.items {
 		margin-top: 50px;
+		height: 600px;
+		overflow-y: scroll;
+	}
 
-		.item {
-			display: flex;
-			justify-content: space-between;
-			border-radius: 5px;
-			margin-bottom: 30px;
-			padding: 5px 10px;
-			border: 1px solid rgba($color: #000000, $alpha: 0.3);
+	.total {
+		display: flex;
+		justify-content: space-evenly;
 
-			img {
-				width: 120px;
-				height: 100px;
-			}
-
-			p {
-				width: 180px;
-				display: flex;
-				text-align: center;
-				align-items: center;
-				word-break: break-all;
-				justify-content: center;
-			}
-
-			img + p {
-				font-size: 22px;
-				line-height: 22px;
-			}
-
-			.count {
-				display: flex;
-				align-items: center;
-
-				button {
-					width: 30px;
-					height: 30px;
-					font-size: 22px;
-					cursor: pointer;
-					text-align: center;
-					border-radius: 30px;
-					background-color: rgba($color: #000000, $alpha: 0.3);
-				}
-
-				p {
-					width: 80px;
-				}
-
-				p + button {
-					padding-bottom: 4px;
-				}
-			}
-
-			p {
-				justify-content: space-evenly;
-
-				img {
-					width: 20px;
-					height: 20px;
-					cursor: pointer;
-					margin-left: 15px;
-				}
-			}
-		}
+		font-size: 22px;
 	}
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 import s from './Card.module.scss';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { addCart } from '../../redux/slice/cartSlice';
+
 export interface IProduct {
 	id: number;
 	title: string;
@@ -16,7 +19,12 @@ type Props = {
 };
 
 const Index: React.FC<Props> = ({ product }) => {
-	const [counter, setCounter] = React.useState(0);
+	const dispatch = useAppDispatch();
+	const cartItem = useAppSelector((state) =>
+		state.cartItems.items.find((element: any) => element.id === product.id)
+	);
+
+	const addCount = cartItem ? cartItem.count : 0;
 
 	return (
 		<div className={s.wrapper}>
@@ -27,8 +35,9 @@ const Index: React.FC<Props> = ({ product }) => {
 			<p>Рейтинг: {product.rating}/10</p>
 			<div>
 				<p>Цена: {product.price} ₽</p>
-				<button onClick={() => setCounter(counter + 1)}>
-					Добавить <div>{counter}</div>
+				<button onClick={() => dispatch(addCart(product))}>
+					Добавить
+					{addCount > 0 && <div>{addCount}</div>}
 				</button>
 			</div>
 		</div>

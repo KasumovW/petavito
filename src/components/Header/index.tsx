@@ -5,10 +5,18 @@ import s from './Header.module.scss';
 import best_logo from '../../assets/img/up.svg';
 import basket from '../../assets/img/basket.svg';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/redux';
 
 type Props = {};
 
 const Index: React.FC = (props: Props) => {
+	const { items, totalPrice } = useAppSelector((state) => state.cartItems);
+
+	const totalCount = items.reduce(
+		(sum: number, element: { count: number }) => sum + element.count,
+		0
+	);
+
 	return (
 		<div className={s.wrapper}>
 			<div className={s.container}>
@@ -32,10 +40,10 @@ const Index: React.FC = (props: Props) => {
 				</ul>
 				<Link to='/cart'>
 					<div className={s.basket}>
-						<span>0 ₽</span>
+						<span>{totalPrice} ₽</span>
 						<div />
 						<span>
-							<img src={basket} alt='Иконка не прогрузилась' />0
+							<img src={basket} alt='Иконка не прогрузилась' /> {totalCount}
 						</span>
 					</div>
 				</Link>

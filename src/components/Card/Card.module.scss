@@ -44,6 +44,16 @@
 			display: flex;
 			justify-content: space-evenly;
 			font-weight: 500;
+			transition: all ease 150ms;
+
+			&:hover {
+				background-color: rgba($color: #000000, $alpha: 1);
+				color: white;
+			}
+
+			&:active {
+				transform: scale(0.97);
+			}
 		}
 	}
 }

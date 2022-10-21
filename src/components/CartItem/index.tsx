@@ -18,7 +18,7 @@ const Index: React.FC<Props> = ({ element }) => {
 			<p>{element.title}</p>
 			<p>{element.price} ₽</p>
 			<div className={s.count}>
-				<button onClick={() => element.count > 0 && dispatch(minusCart(element.id))}>-</button>
+				<button onClick={() => element.count > 0 && dispatch(minusCart(element))}>-</button>
 				<p>{element.count}</p>
 				<button onClick={() => dispatch(addCart(element))}>+</button>
 			</div>

@@ -4,6 +4,7 @@ import s from './Cart.module.scss';
 import CartItem from '../../components/CartItem';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { clearCart } from '../../redux/slice/cartSlice';
+import { Link } from 'react-router-dom';
 
 type Props = {};
 
@@ -23,9 +24,18 @@ const Index: React.FC<Props> = ({}) => {
 				<p onClick={() => dispatch(clearCart())}>Очистить корзину</p>
 			</div>
 			<div className={s.items}>
-				{items.length > 0
-					? items.map((element: any) => <CartItem element={element} />)
-					: 'В карзине нечего нет😕'}
+				{items.length > 0 ? (
+					items.map((element: any) => <CartItem element={element} />)
+				) : (
+					<div className={s.want}>
+						<h3>В карзине нечего нет, хотите добавить?</h3>
+						<p>Вероятней всего, вы не добавили нечего в карзину.</p>
+						<p>Для того, чтобы добавить товар в карзину, перейдите на главную страницу.</p>
+						<Link to='/'>
+							<button>Вернутся назад</button>
+						</Link>
+					</div>
+				)}
 			</div>
 			<div className={s.total}>
 				<p>Всего товаров: {totalCount} шт.</p>
